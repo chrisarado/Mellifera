@@ -408,3 +408,80 @@ body{font-family:'Nunito',system-ui,sans-serif;overflow-x:hidden}
   0%{transform:translateY(0) translateX(0) rotate(0);opacity:.85}
   100%{transform:translateY(110vh) translateX(var(--dx,20px)) rotate(var(--rot,360deg));opacity:0}
 }
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+
+/* Tablet ≤820px: loosen multi-column layouts */
+@media (max-width:820px){
+  #s5 .grid{grid-template-columns:1fr 1fr}
+  #s6 .row{flex-wrap:wrap}
+  .awd-wrap{flex:0 0 calc(50% - 10px)}
+  #s8 .ig{flex-wrap:wrap;height:auto;max-height:none}
+  .ic{flex:0 0 calc(50% - 8px)}
+}
+
+/* Medium ≤720px: scratch cards go 2×2 without hex offset (all 4 cards visible) */
+@media (max-width:720px){
+  .hc-cards-wrap{width:100%}
+  .hc-row-27,.hc-row-27.off{margin-top:0;margin-left:0;gap:10px}
+  .hc-cell-27{flex:0 0 calc(50% - 5px);width:calc(50% - 5px);aspect-ratio:292/252;height:auto}
+  .hc-cell-27 .mc{padding:36px 22px 28px}
+}
+
+/* Mobile ≤600px */
+@media (max-width:600px){
+  .sec{padding-left:18px;padding-right:18px}
+
+  /* S1: bee circle on top, text below */
+  #s1 .inner{flex-direction:column-reverse;gap:16px}
+  #s1 .circle{width:100px;height:100px;font-size:40px;align-self:center}
+
+  /* S4: 2 cards per row */
+  #s4 .card{width:calc(50% - 6px);flex:none;min-height:90px}
+
+  /* S5: title row wraps */
+  #s5 .title-row{flex-wrap:wrap}
+
+  /* S6: awards stack vertically */
+  #s6 .row{flex-direction:column;min-height:0}
+  .awd-wrap{flex:none;min-width:auto}
+  .awd-inner{min-height:160px}
+
+  /* S7: description goes full width */
+  #s7 .sub{max-width:100%}
+
+  /* S8: initiative cards stack */
+  #s8 .ig{flex-direction:column}
+  .ic{flex:none;min-width:auto}
+
+  /* S9: single column */
+  #s9 .grid{grid-template-columns:1fr}
+
+  /* S11 honey cells: scale to 3 per row via calc */
+  .honey-row{gap:5px}
+  .hcell{
+    width:calc((100vw - 46px) / 3);
+    height:calc((100vw - 46px) / 3 * 0.579)
+  }
+  .honey-row:last-child{
+    margin-top:calc((100vw - 46px) / 3 * -0.145);
+    margin-left:calc((100vw - 46px) / 6 + 2.5px)
+  }
+  .hc-ico{font-size:18px}
+  .hc-tip{font-size:7px}
+  .hcell-reveal{font-size:9px;padding:0 6px;line-height:1.2}
+
+  /* Schätzspiel modal */
+  .schaetz-inner{padding:24px 20px}
+
+  /* Flying bee and pollen: hidden on mobile */
+  #bee-wrap{display:none}
+  #pollen{display:none}
+}
+
+/* Very small phones ≤420px */
+@media (max-width:420px){
+  #s5 .grid{grid-template-columns:1fr}
+}
