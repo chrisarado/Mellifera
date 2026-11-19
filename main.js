@@ -4,10 +4,10 @@
    HONEYCOMB DIVIDER GENERATOR
 ══════════════════════════════════════ */
 const hcCfg = {
-  hcd1:{fill:'rgba(245,200,66,.15)',stroke:'rgba(245,200,66,.3)'},
+  hcd1:{fill:'rgba(240,168,32,.15)',stroke:'rgba(240,168,32,.3)'},
   hcd2:{fill:'rgba(245,240,224,.18)',stroke:'rgba(245,240,224,.35)'},
   hcd3:{fill:'rgba(184,64,32,.15)',stroke:'rgba(184,64,32,.28)'},
-  hcd4:{fill:'rgba(245,200,66,.14)',stroke:'rgba(245,200,66,.28)'},
+  hcd4:{fill:'rgba(240,168,32,.14)',stroke:'rgba(240,168,32,.28)'},
   hcd5:{fill:'rgba(224,208,144,.2)',stroke:'rgba(224,208,144,.35)'},
   hcd6:{fill:'rgba(26,74,31,.12)',stroke:'rgba(26,74,31,.22)'},
   hcd7:{fill:'rgba(26,74,31,.1)',stroke:'rgba(26,74,31,.2)'},
@@ -150,7 +150,7 @@ const acCounterEl=document.getElementById('ac-counter');
 const acHintEl=document.getElementById('ac-hint');
 
 function burstDots(cx,cy,color){
-  const cols=['#f5c842','#d44828','#5a8040','#e0d090','#e08020','#b8d490',color];
+  const cols=['#F0A820','#C44A14','#5a8040','#e0d090','#D96910','#b8d490',color];
   for(let i=0;i<16;i++){
     const p=document.createElement('div'); p.className='ac-dot';
     const ang=Math.PI*2/16*i+(Math.random()-.5)*.4;
@@ -194,7 +194,7 @@ document.querySelectorAll('#ac-grid .ac').forEach(card=>{
 });
 
 function confetti(){
-  const col=['#f5c842','#d44828','#5a8040','#e0d090','#e08020','#b8d490'];
+  const col=['#F0A820','#C44A14','#5a8040','#e0d090','#D96910','#b8d490'];
   for(let i=0;i<60;i++){
     const p=document.createElement('div'); p.className='cp';
     const s=6+Math.random()*8;
@@ -352,7 +352,7 @@ document.querySelectorAll('.hc-cell-27').forEach(cell=>{
         canvas.style.pointerEvents='none';
         cell.classList.add('scraped');
         const r=cell.getBoundingClientRect();
-        burstDots(r.left+r.width/2,r.top+r.height/2,'#f5c842');
+        burstDots(r.left+r.width/2,r.top+r.height/2,'#F0A820');
       }
     },60);
   }
@@ -375,7 +375,7 @@ document.querySelectorAll('.hc-cell-27').forEach(cell=>{
   let found=0;
 
   function honeyBurst(cx,cy){
-    const cols=['#f5c842','#e8b030','#e08020','#5a8040','#f5f0e0'];
+    const cols=['#F0A820','#D4941A','#D96910','#5a8040','#f5f0e0'];
     for(let i=0;i<18;i++){
       const p=document.createElement('div'); p.className='ac-dot';
       const ang=Math.PI*2/18*i+(Math.random()-.5)*.4;
@@ -421,6 +421,60 @@ document.querySelectorAll('.hc-cell-27').forEach(cell=>{
       }
     });
   });
+})();
+
+/* ══ S8 Sticky Initiative Panels ══ */
+(function(){
+  const section=document.getElementById('s8');
+  if(!section) return;
+  const panels=Array.from(section.querySelectorAll('.s8-panel'));
+  const counter=document.getElementById('s8-counter');
+  const dots=Array.from(section.querySelectorAll('.s8-dot'));
+  const abbrEl=document.getElementById('s8-abbr-display');
+  const nameEl=document.getElementById('s8-name-display');
+  const n=panels.length;
+  const meta=panels.map(p=>({abbr:p.dataset.abbr,name:p.dataset.name}));
+
+  function isMobile(){return window.innerWidth<=768}
+
+  function enableMobile(){
+    panels.forEach(p=>{p.style.transform='';p.classList.add('active');});
+  }
+
+  if(isMobile()){enableMobile();return;}
+
+  function easeOut(t){return 1-Math.pow(1-t,2.4)}
+
+  let lastIdx=-1;
+
+  function syncLeft(idx){
+    if(idx===lastIdx) return;
+    lastIdx=idx;
+    if(counter) counter.textContent=`0${idx+1} / 0${n}`;
+    if(abbrEl) abbrEl.textContent=meta[idx].abbr;
+    if(nameEl) nameEl.textContent=meta[idx].name;
+    dots.forEach((d,i)=>d.classList.toggle('active',i<=idx));
+  }
+
+  function update(){
+    const rect=section.getBoundingClientRect();
+    const scrollable=section.offsetHeight-window.innerHeight;
+    if(scrollable<=0) return;
+    const progress=Math.max(0,Math.min(1,-rect.top/scrollable));
+    let topActive=0;
+    panels.forEach((panel,i)=>{
+      const pp=Math.max(0,Math.min(1,(progress-i/n)*n));
+      panel.style.transform=`translateX(${((1-easeOut(pp))*100).toFixed(2)}%)`;
+      if(pp>=0.6){panel.classList.add('active');topActive=i;}
+    });
+    syncLeft(topActive);
+  }
+
+  window.addEventListener('scroll',update,{passive:true});
+  window.addEventListener('resize',()=>{
+    if(isMobile()) enableMobile(); else update();
+  });
+  update();
 })();
 
 /* ══ Pollen ══ */
