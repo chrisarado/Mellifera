@@ -477,6 +477,16 @@ document.querySelectorAll('.hc-cell-27').forEach(cell=>{
   update();
 })();
 
+/* ══ S1 Circle Photo Reveal ══ */
+(function(){
+  const circle=document.getElementById('s1-circle');
+  if(!circle) return;
+  circle.addEventListener('click',()=>{
+    if(circle.classList.contains('photo-revealed')) return;
+    circle.classList.add('photo-revealed');
+  });
+})();
+
 /* ══ Pollen ══ */
 const pc=document.getElementById('pollen');
 for(let i=0;i<24;i++){

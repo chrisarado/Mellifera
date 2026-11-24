@@ -42,7 +42,10 @@
       <div class="year fz d3">2026</div>
       <p class="tag fb d4">Ein Jahr. Viele Veränderungen. Noch mehr Wirkung.</p>
     </div>
-    <div class="circle fz d2">🐝</div>
+    <div class="circle fz d2" id="s1-circle">
+      <span class="s1-bee-ico">🐝</span>
+      <img class="s1-photo" src="src/Jürgen-Krieger_Gruppenbild_Mellifera_2025.jpg" alt="Mellifera Team 2025" loading="lazy">
+    </div>
   </div>
 </section>
 
@@ -152,9 +155,9 @@
     <div class="ac fz d2" style="background:var(--y)" data-id="0"><div class="lock-overlay">🔒</div><div class="stamp"><span class="stamp-txt">Freigeschaltet!</span></div><span class="ac-lbl">F R E I G E S C H A L T E T</span><span class="ac-ico">🎂</span><span class="ac-txt">Mellifera-Jubiläum gefeiert</span></div>
     <div class="ac fz d3" style="background:var(--cr)" data-id="1"><div class="lock-overlay">🔒</div><div class="stamp"><span class="stamp-txt">Freigeschaltet!</span></div><span class="ac-lbl">F R E I G E S C H A L T E T</span><span class="ac-ico">📜</span><span class="ac-txt">Neue Mellifera-Satzung verabschiedet</span></div>
     <div class="ac fz d4" style="background:var(--lg)" data-id="2"><div class="lock-overlay">🔒</div><div class="stamp"><span class="stamp-txt">Freigeschaltet!</span></div><span class="ac-lbl">F R E I G E S C H A L T E T</span><span class="ac-ico">🤝</span><span class="ac-txt">Jürgen Krieger als Pro-Bono-Coach gewonnen</span></div>
-    <div class="ac fz d5" style="background:var(--lb)" data-id="3"><div class="lock-overlay">🔒</div><div class="stamp"><span class="stamp-txt">Freigeschaltet!</span></div><span class="ac-lbl">F R E I G E S C H A L T E T</span><span class="ac-ico">💚</span><span class="ac-txt">Michael vom DRK für Fundraising zurückgewonnen</span></div>
+    <div class="ac fz d5" style="background:var(--lb)" data-id="3"><div class="lock-overlay">🔒</div><div class="stamp"><span class="stamp-txt">Freigeschaltet!</span></div><span class="ac-lbl">F R E I G E S C H A L T E T</span><span class="ac-ico">🌱</span><span class="ac-txt">Gärten der Generationen auf 16 Standorte gewachsen</span></div>
     <div class="ac fz d6" style="background:var(--lv)" data-id="4"><div class="lock-overlay">🔒</div><div class="stamp"><span class="stamp-txt">Freigeschaltet!</span></div><span class="ac-lbl">F R E I G E S C H A L T E T</span><span class="ac-ico" style="font-size:clamp(18px,2.5vw,28px);font-weight:900;display:block;margin-bottom:5px">EU</span><span class="ac-txt">Erasmus-/EU-Akkreditierung erreicht</span></div>
-    <div class="ac fz d7" style="background:var(--nbl)" data-id="5"><div class="lock-overlay">🔒</div><div class="stamp"><span class="stamp-txt">Freigeschaltet!</span></div><span class="ac-lbl" style="color:var(--nbl-sky)">F R E I G E S C H A L T E T</span><span class="ac-ico">🌸</span><span class="ac-txt" style="color:white">gUG von NBL gegründet</span></div>
+    <div class="ac fz d7" style="background:var(--nbl)" data-id="5"><div class="lock-overlay">🔒</div><div class="stamp"><span class="stamp-txt">Freigeschaltet!</span></div><span class="ac-lbl" style="color:var(--nbl-sky)">F R E I G E S C H A L T E T</span><span class="ac-ico">🌸</span><span class="ac-txt" style="color:var(--nbl-sky)">gUG von NBL gegründet</span></div>
   </div>
   <p class="hint" id="ac-hint">Tippe auf die Karten, um sie freizuschalten! 👆</p>
 </section>
@@ -182,8 +185,8 @@
     </div>
     <div class="awd-wrap fz d4" onclick="this.classList.toggle('flipped')">
       <div class="awd-inner">
-        <div class="awd-front" style="background:var(--wbh)"><span class="awd-ico">🌍</span><div class="awd-org" style="color:var(--wbh-amber)">Mellifera</div><div class="awd-nm" style="color:rgba(60,25,10,.72)">Planet Hero Award Voting</div><span class="awd-hint" style="color:rgba(60,25,10,.3)">↩ Umdrehen</span></div>
-        <div class="awd-back" style="background:var(--g)"><span class="awd-ico">⭐</span><div class="awd-org" style="color:var(--y);font-size:clamp(18px,2.5vw,30px)">Planet Hero</div><div class="awd-desc">Nominierung für gesellschaftliches Engagement. Mellifera's Arbeit für wesensgemäße Bienenhaltung findet bundesweite Anerkennung.</div></div>
+        <div class="awd-front" style="background:var(--wbh)"><span class="awd-ico">🌍</span><div class="awd-org" style="color:var(--wbh-amber)">Mellifera</div><div class="awd-nm" style="color:rgba(60,25,10,.72)">Planet Hero Award</div><span class="awd-hint" style="color:rgba(60,25,10,.3)">↩ Umdrehen</span></div>
+        <div class="awd-back" style="background:var(--g)"><span class="awd-ico">⭐</span><div class="awd-org" style="color:var(--y);font-size:clamp(18px,2.5vw,30px)">Planet Hero</div><div class="awd-desc">Nominierung für gesellschaftliches Engagement — Mellifera's Bienenhaltungs-Arbeit findet bundesweite Anerkennung.</div></div>
       </div>
     </div>
   </div>
@@ -487,7 +490,6 @@
       <ellipse cx="280" cy="210" rx="420" ry="190" fill="#5a8040"/>
       <ellipse cx="720" cy="220" rx="520" ry="175" fill="#F0A820"/>
       <ellipse cx="1200" cy="210" rx="440" ry="188" fill="#C44A14"/>
-      <circle cx="155" cy="135" r="32" fill="#D96910"/>
     </svg>
   </div>
 
